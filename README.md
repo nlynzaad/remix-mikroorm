@@ -4,9 +4,18 @@ This is a bare-bones test project to implement [mikro-orm](https://mikro-orm.io/
 
 ## Getting started
 
-1) run npm install
-2) run npx mikro-orm-esm migration:create to create the first migration
-3) run npx mikro-orm-esm migration:up to create the database and apply the migration
+1) run the following to install all your dependencies
+```shellscript 
+npm install
+```
+2) run to following to create the first migration 
+```shellscript
+npx mikro-orm-esm migration:create
+``` 
+3) run the following to create the database and apply the migration
+```shellscript s
+npx mikro-orm-esm migration:up
+``` 
 
 ## Development
 
