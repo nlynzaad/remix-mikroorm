@@ -1,6 +1,5 @@
 import {EntityManager, MikroORM, Options} from '@mikro-orm/better-sqlite';
-
-import dbConfig from "./config";
+import dbConfig from "~/../mikro-orm.config";
 
 export interface Services {
 	orm: MikroORM;
