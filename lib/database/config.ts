@@ -8,18 +8,17 @@ but seeing as this has been secluded to its own file that is purely configuratio
 we can just disable the type check here
  */
 
-import {defineConfig} from "@mikro-orm/better-sqlite";
-import {Migrator} from "@mikro-orm/migrations";
+import { defineConfig } from '@mikro-orm/better-sqlite';
+import { Migrator } from '@mikro-orm/migrations';
 
-import UserEntitySchema from "../user.entity.ts";
+import UserEntitySchema from '../user.entity.ts';
 
 export const config = defineConfig({
 	entities: [UserEntitySchema],
 	dbName: 'test.db',
 	migrations: {
-		path: './lib/database/migrations'
+		path: './lib/database/migrations',
 	},
 	extensions: [Migrator],
-	tsNode: true
 });
 export default config;
