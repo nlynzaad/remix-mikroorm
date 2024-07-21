@@ -15,15 +15,22 @@
     "@mikro-orm/cli": "^6.3.0",
     "@mikro-orm/core": "^6.3.0",
     "@mikro-orm/migrations": "^6.3.0",
+    "@mikro-orm/reflection": "^6.3.0",
+    "@mikro-orm/seeder": "^6.3.0",
     "@remix-run/node": "^2.10.3",
     "@remix-run/react": "^2.10.3",
     "@remix-run/serve": "^2.10.3",
     "isbot": "^4.4.0",
+    "pluralize": "^8.0.0",
+    "radash": "^12.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "reflect-metadata": "^0.2.2",
+    "vite-plugin-dynamic-import": "^1.5.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.10.3",
+    "@types/pluralize": "^0.0.33",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

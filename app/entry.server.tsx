@@ -11,7 +11,8 @@ import { createReadableStreamFromReadable } from '@remix-run/node';
 import { RemixServer } from '@remix-run/react';
 import { isbot } from 'isbot';
 import { renderToPipeableStream } from 'react-dom/server';
-import { initORM } from '~/lib/database/db';
+import { initORM } from '~/.server/lib/database/db';
+import 'reflect-metadata';
 
 const ABORT_DELAY = 5_000;
 

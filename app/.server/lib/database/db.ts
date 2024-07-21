@@ -1,5 +1,5 @@
 import {EntityManager, MikroORM, Options} from '@mikro-orm/better-sqlite';
-import dbConfig from "~/../mikro-orm.config";
+import {config} from "./config";
 
 export interface Services {
 	orm: MikroORM;
@@ -13,7 +13,7 @@ export async function initORM(options?: Options): Promise<Services> {
 		return cache;
 	}
 
-	const orm = await MikroORM.init({...dbConfig, ...options});
+	const orm = await MikroORM.init({...config, ...options});
 
 	return (cache = {
 		orm,

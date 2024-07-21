@@ -20,6 +20,12 @@ importers:
       '@mikro-orm/migrations':
         specifier: ^6.3.0
         version: 6.3.0(@mikro-orm/core@6.3.0)(@types/node@20.14.11)(better-sqlite3@11.1.2)
+      '@mikro-orm/reflection':
+        specifier: ^6.3.0
+        version: 6.3.0(@mikro-orm/core@6.3.0)
+      '@mikro-orm/seeder':
+        specifier: ^6.3.0
+        version: 6.3.0(@mikro-orm/core@6.3.0)
       '@remix-run/node':
         specifier: ^2.10.3
         version: 2.10.3(typescript@5.5.3)
@@ -32,16 +38,31 @@ importers:
       isbot:
         specifier: ^4.4.0
         version: 4.4.0
+      pluralize:
+        specifier: ^8.0.0
+        version: 8.0.0
+      radash:
+        specifier: ^12.1.0
+        version: 12.1.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      vite-plugin-dynamic-import:
+        specifier: ^1.5.0
+        version: 1.5.0
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.10.3
         version: 2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11))
+      '@types/pluralize':
+        specifier: ^0.0.33
+        version: 0.0.33
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -645,6 +666,18 @@ packages:
     peerDependencies:
       '@mikro-orm/core': ^6.0.0
 
+  '@mikro-orm/reflection@6.3.0':
+    resolution: {integrity: sha512-RjnTGmb0/ygUfZ9f6lomT02fwB+97gcBSZOGlHFNqsKBUDjngmzZbcLt8drdlvMTfDQ3v9VtJwG0TGDSO/GBng==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@mikro-orm/core': ^6.0.0
+
+  '@mikro-orm/seeder@6.3.0':
+    resolution: {integrity: sha512-ieIT7JcqOOdwaeQpM7BOv3sQPBUIF9pDBkCU5Md+mJZGR37+3Lee7mSTkl2VROQZT3upFX7LZLzw60asXuwFMA==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@mikro-orm/core': ^6.0.0
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -860,6 +893,9 @@ packages:
   '@rushstack/ts-command-line@4.22.2':
     resolution: {integrity: sha512-xkvrGd6D9dPlI3I401Thc640WNsEPB1sGEmy12a2VJaPQPwhE6Ik0gEVPZJ/2G1w213eaCAdxUY1xpiTulsmpA==}
 
+  '@ts-morph/common@0.24.0':
+    resolution: {integrity: sha512-c1xMmNHWpNselmpIqursHeOHHBTIsJLbB+NuovbTTRCNiTLEr/U9dbJ8qy0jd/O2x5pc3seWuOUN5R2IoOTp8A==}
+
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
 
@@ -910,6 +946,9 @@ packages:
 
   '@types/node@20.14.11':
     resolution: {integrity: sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==}
+
+  '@types/pluralize@0.0.33':
+    resolution: {integrity: sha512-JOqsl+ZoCpP4e8TDke9W79FDcSgPAR0l6pixx2JHkhnRjvShyYiAYw2LVsnA7K08Y6DeOnaU6ujmENO4os/cYg==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -1300,6 +1339,9 @@ packages:
   clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+
+  code-block-writer@13.0.1:
+    resolution: {integrity: sha512-c5or4P6erEA69TxaxTNcHUNcIn+oyxSRTOWV+pSYF+z4epXqNvwvJ70XPGjPNgue83oAFAPBRQYwpAJ/Hpe/Sg==}
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -2446,6 +2488,9 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
+  magic-string@0.30.10:
+    resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
+
   make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
 
@@ -2677,6 +2722,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
 
@@ -2868,6 +2918,9 @@ packages:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
 
+  path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
+
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
@@ -2928,6 +2981,10 @@ packages:
 
   pkg-types@1.1.3:
     resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
+
+  pluralize@8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
 
   pony-cause@2.1.11:
     resolution: {integrity: sha512-M7LhCsdNbNgiLYiP4WjsfLUuFmCfnjdF6jKe2R9NKl4WFN+HZPGHJZ9lnLP7f9ZnKe3U9nuWD0szirmj+migUg==}
@@ -3079,6 +3136,10 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  radash@12.1.0:
+    resolution: {integrity: sha512-b0Zcf09AhqKS83btmUeYBS8tFK7XL2e3RvLmZcm0sTdF1/UUlHSsjXdCcWNxe7yfmAlPve5ym0DmKGtTzP6kVQ==}
+    engines: {node: '>=14.18.0'}
 
   range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
@@ -3540,6 +3601,9 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
+  ts-morph@23.0.0:
+    resolution: {integrity: sha512-FcvFx7a9E8TUe6T3ShihXJLiJOiqyafzFKUO4aqIHDUCIvADdGNShcbc2W5PMr3LerXRv7mafvFZ9lRENxJmug==}
+
   ts-node@10.9.2:
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
@@ -3726,6 +3790,9 @@ packages:
     resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
+
+  vite-plugin-dynamic-import@1.5.0:
+    resolution: {integrity: sha512-Qp85c+AVJmLa8MLni74U4BDiWpUeFNx7NJqbGZyR2XJOU7mgW0cb7nwlAMucFyM4arEd92Nfxp4j44xPi6Fu7g==}
 
   vite-tsconfig-paths@4.3.2:
     resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
@@ -4423,6 +4490,18 @@ snapshots:
       - supports-color
       - tedious
 
+  '@mikro-orm/reflection@6.3.0(@mikro-orm/core@6.3.0)':
+    dependencies:
+      '@mikro-orm/core': 6.3.0
+      globby: 11.1.0
+      ts-morph: 23.0.0
+
+  '@mikro-orm/seeder@6.3.0(@mikro-orm/core@6.3.0)':
+    dependencies:
+      '@mikro-orm/core': 6.3.0
+      fs-extra: 11.2.0
+      globby: 11.1.0
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -4710,6 +4789,13 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
+  '@ts-morph/common@0.24.0':
+    dependencies:
+      fast-glob: 3.3.2
+      minimatch: 9.0.5
+      mkdirp: 3.0.1
+      path-browserify: 1.0.1
+
   '@tsconfig/node10@1.0.11': {}
 
   '@tsconfig/node12@1.0.11': {}
@@ -4755,6 +4841,8 @@ snapshots:
   '@types/node@20.14.11':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/pluralize@0.0.33': {}
 
   '@types/prop-types@15.7.12': {}
 
@@ -5257,6 +5345,8 @@ snapshots:
       wrap-ansi: 7.0.0
 
   clone@1.0.4: {}
+
+  code-block-writer@13.0.1: {}
 
   color-convert@1.9.3:
     dependencies:
@@ -6549,6 +6639,10 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
+  magic-string@0.30.10:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
   make-error@1.3.6: {}
 
   markdown-extensions@1.1.1: {}
@@ -6951,6 +7045,8 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
+  mkdirp@3.0.1: {}
+
   mlly@1.7.1:
     dependencies:
       acorn: 8.12.1
@@ -7158,6 +7254,8 @@ snapshots:
 
   parseurl@1.3.3: {}
 
+  path-browserify@1.0.1: {}
+
   path-exists@4.0.0: {}
 
   path-is-absolute@1.0.1: {}
@@ -7206,6 +7304,8 @@ snapshots:
       confbox: 0.1.7
       mlly: 1.7.1
       pathe: 1.1.2
+
+  pluralize@8.0.0: {}
 
   pony-cause@2.1.11: {}
 
@@ -7356,6 +7456,8 @@ snapshots:
       side-channel: 1.0.6
 
   queue-microtask@1.2.3: {}
+
+  radash@12.1.0: {}
 
   range-parser@1.2.1: {}
 
@@ -7914,6 +8016,11 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
+  ts-morph@23.0.0:
+    dependencies:
+      '@ts-morph/common': 0.24.0
+      code-block-writer: 13.0.1
+
   ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
@@ -8151,6 +8258,13 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vite-plugin-dynamic-import@1.5.0:
+    dependencies:
+      acorn: 8.12.1
+      es-module-lexer: 1.5.4
+      fast-glob: 3.3.2
+      magic-string: 0.30.10
 
   vite-tsconfig-paths@4.3.2(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)):
     dependencies:

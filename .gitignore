@@ -7,4 +7,5 @@ node_modules
 
 .idea
 .vscode
-/app/lib/database/migrations
+/app/.server/lib/database/migrations
+/test/build

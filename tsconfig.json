@@ -5,11 +5,11 @@
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
-    "**/.client/**/*.tsx"
+    "**/.client/**/*.tsx",
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@remix-run/node", "vite/client"],
+    "types": ["@remix-run/node", "vite/client", "reflect-metadata"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
@@ -25,7 +25,9 @@
     "paths": {
       "~/*": ["./app/*"]
     },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     // Vite takes care of building everything, not tsc.
-    "noEmit": true,
+    "noEmit": true
   },
 }
