@@ -2,6 +2,9 @@
 
 This is a bare-bones test project to implement [mikro-orm](https://mikro-orm.io/) and [Remix (vite plugin)](https://remix.run/).
 
+This generally just works the only real quirk is the requirement by the CLI to include the file extension which can be an annoyance with typescript. 
+This can either be enabled globally in the tsconfig or disabled on a case by case basis using ts comments. In this project I've opted to disable on a case by case basis. 
+
 ## Getting started
 
 1) run the following to install all your dependencies
