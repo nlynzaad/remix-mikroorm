@@ -1,5 +1,5 @@
 import {EntitySchema} from "@mikro-orm/core";
-import {type UserRole} from "../userRoles/userRole.entity";
+import {type UserRole, userRoleEntity} from "../userRoles/userRole.entity";
 
 export interface User {
 	id: number;
@@ -8,15 +8,17 @@ export interface User {
 	userRole: UserRole;
 }
 
+const entityName = 'User';
+
 const userEntitySchema = new EntitySchema<User>({
-	name: 'User',
+	name: entityName,
 	tableName: 'tblUsers',
 	properties: {
 		id: {type: 'int', autoincrement: true, primary: true},
 		name: {type: 'string', name: 'txtUsername'},
 		email: {type: 'string', name: 'txtEmail'},
-		userRole: {kind: 'm:1', entity: 'UserRole', nullable: false, name: 'fkiUserRoleId', eager: true},
+		userRole: {kind: 'm:1', entity: userRoleEntity.name, nullable: false, name: 'fkiUserRoleId', eager: true},
 	}
 });
 
-export const userEntity = {name: 'User', schema: userEntitySchema};
+export const userEntity = {name: entityName, schema: userEntitySchema};
