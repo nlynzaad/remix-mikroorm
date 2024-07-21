@@ -1,5 +1,6 @@
 import {Collection, Entity, OneToMany, PrimaryKey, Property} from "@mikro-orm/core";
-import {type User, userEntity} from "../users/user.entity";
+//@ts-expect-error mikro-orm cli expects file extension
+import {type User, userEntity} from "../users/user.entity.ts";
 
 @Entity()
 export class UserRole {
@@ -9,7 +10,7 @@ export class UserRole {
 	@Property({name: 'txtDescription', type: 'string'})
 	description!: string;
 
-	@OneToMany(userEntity.name, (user: User) => user.userRole)
+	@OneToMany(() => userEntity.name, (user: User) => user.userRole)
 	users = new Collection<User>(this);
 
 	constructor(id: number, description: string) {

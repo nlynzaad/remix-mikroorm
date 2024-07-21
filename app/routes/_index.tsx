@@ -12,15 +12,17 @@ export const loader = async () => {
 	return json({users, userRoles})
 }
 
+type userActionSubmissionType = User;
+
 export const action = async ({request}: ActionFunctionArgs) => {
 	const formData = await request.formData();
-	const user = Object.fromEntries(formData) as unknown as User;
+	const user = Object.fromEntries(formData) as unknown as userActionSubmissionType;
 
 	const db = (await initORM()).em.fork();
 
 	db.create(userEntity.name, user)
 	await db.flush();
-	return json({user})
+	return null
 }
 
 export const meta: MetaFunction = () => {
@@ -55,12 +57,27 @@ export default function Index() {
 									value={role.id}>{role.description}</option>)}
 							</select>
 						</div>
-						<button type={"submit"} className={'bg-blue-600 rounded p-1'}>Submit</button>
+						<button type={"submit"} className={'bg-blue-600 rounded p-1'}>
+							Submit
+						</button>
 					</Form>
 				</div>
 				<div className={'flex flex-col'}>
 					{users.map((user) => (
-						<div key={user.id}>{user.id}: {user.name} - {user.email} ({user.userRole.description})</div>
+						<Form method="POST" action={`/delete/${user.id}`} key={user.id}
+							onSubmit={(event) => {
+								const response = confirm(
+									"Please confirm you want to delete this record."
+								);
+								if (!response) {
+									event.preventDefault();
+								}
+							}}>
+							<div>
+								{user.id}: {user.name} - {user.email} ({user.userRole.description})
+								<button type={'submit'} className={'pl-2'}>X</button>
+							</div>
+						</Form>
 					))}
 				</div>
 			</div>
