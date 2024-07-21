@@ -7,8 +7,8 @@ import {
 	ReflectMetadataProvider
 } from "@mikro-orm/better-sqlite";
 import {Migrator} from "@mikro-orm/migrations";
-import {schema as UserSchema} from '../users/user.entity.ts';
-import {UserRole} from '../userRoles/userRole.entity.ts';
+import {userEntity} from '../users/user.entity.ts';
+import {userRoleEntity} from '../userRoles/userRole.entity.ts';
 import pluralize from "pluralize";
 import {SeedManager} from "@mikro-orm/seeder";
 
@@ -19,7 +19,7 @@ class TableNamingStrategy extends EntityCaseNamingStrategy implements NamingStra
 }
 
 export const config = defineConfig({
-	entities: [UserSchema, UserRole],
+	entities: [userEntity.schema, userRoleEntity.schema],
 	dbName: 'test.db',
 	migrations: {
 		path: './app/.server/lib/database/migrations',

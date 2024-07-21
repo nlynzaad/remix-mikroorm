@@ -12,9 +12,10 @@ export class UserRole {
 	@OneToMany(() => 'User', (user: User) => user.userRole)
 	users = new Collection<User>(this);
 
-
 	constructor(id: number, description: string) {
 		this.id = id;
 		this.description = description;
 	}
 }
+
+export const userRoleEntity = {name: 'UserRole', schema: UserRole}

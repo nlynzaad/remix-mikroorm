@@ -8,7 +8,7 @@ export interface User {
 	userRole: UserRole;
 }
 
-export const schema = new EntitySchema<User>({
+const userEntitySchema = new EntitySchema<User>({
 	name: 'User',
 	tableName: 'tblUsers',
 	properties: {
@@ -18,3 +18,5 @@ export const schema = new EntitySchema<User>({
 		userRole: {kind: 'm:1', entity: 'UserRole', nullable: false, name: 'fkiUserRoleId', eager: true},
 	}
 });
+
+export const userEntity = {name: 'User', schema: userEntitySchema};
