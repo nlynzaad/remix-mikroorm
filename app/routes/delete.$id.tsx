@@ -1,6 +1,6 @@
 import {type ActionFunctionArgs, redirect} from "@remix-run/node";
-import {userEntity} from "~/.server/lib/users/user.entity";
 import {initORM} from "~/.server/lib/database/db";
+import {userEntity} from "~/.server/lib/users/user.entity";
 
 export const action = async ({params}: ActionFunctionArgs) => {
 	console.log('delete: ', params.id)

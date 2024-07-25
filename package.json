@@ -8,7 +8,8 @@
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "mikro-orm": "tsx ./node_modules/@mikro-orm/cli/esm"
   },
   "dependencies": {
     "@mikro-orm/better-sqlite": "^6.3.0",
@@ -46,15 +47,12 @@
     "tailwindcss": "^3.4.6",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.3",
     "vite": "^5.3.4",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "mikro-orm": {
-    "alwaysAllowTs": true,
-    "tsConfigPath": "tsconfig.json"
   }
 }

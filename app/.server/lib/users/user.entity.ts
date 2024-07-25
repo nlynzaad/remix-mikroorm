@@ -1,6 +1,5 @@
 import {EntitySchema} from "@mikro-orm/core";
-//@ts-expect-error mikro-orm cli expects file extension
-import {type UserRole, userRoleEntity} from "../userRoles/userRole.entity.ts";
+import {type UserRole, userRoleEntity} from "../userRoles/userRole.entity";
 
 export interface User {
 	id: number;
@@ -12,7 +11,7 @@ export interface User {
 const entityName = 'User';
 
 const userEntitySchema = new EntitySchema<User>({
-	name: entityName,
+	name: 'User',
 	tableName: 'tblUsers',
 	properties: {
 		id: {type: 'int', autoincrement: true, primary: true},
@@ -22,4 +21,5 @@ const userEntitySchema = new EntitySchema<User>({
 	}
 });
 
+export const schema = userEntitySchema;
 export const userEntity = {name: entityName, schema: userEntitySchema};

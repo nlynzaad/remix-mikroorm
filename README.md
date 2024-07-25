@@ -2,8 +2,13 @@
 
 This is a bare-bones test project to implement [mikro-orm](https://mikro-orm.io/) and [Remix (vite plugin)](https://remix.run/).
 
-This generally just works the only real quirk is the requirement by the CLI to include the file extension which can be an annoyance with typescript. 
-This can either be enabled globally in the tsconfig or disabled on a case by case basis using ts comments. In this project I've opted to disable on a case by case basis. 
+This generally just works the only real quirk is the requirement by the CLI, to include the file extension for ESM projects. 
+
+Given that remix uses vite and hence the project is bundled with esbuild the requirement for file extensions does not really make sense. 
+
+Using tsx instead of ts-node resolves all the pain points, so I have added an extra script in package.json to call the mikro-orm esm cli tool via tsx instead of the default ts-node usage. 
+
+TS-node is still required for the esm script's validations to pass but that is the extent of it. There is talk of possibly replacing ts-node in future releases of mikro-orm [discussion](https://github.com/mikro-orm/mikro-orm/discussions/5275). 
 
 ## Getting started
 
@@ -13,11 +18,11 @@ npm install
 ```
 2) run to following to create the first migration 
 ```shellscript
-npx mikro-orm-esm migration:create
+npm run mikro-orm migration:create
 ``` 
 3) run the following to create the database and apply the migration
 ```shellscript s
-npx mikro-orm-esm migration:up
+npm mikro-orm migration:up
 ``` 
 
 ## Development

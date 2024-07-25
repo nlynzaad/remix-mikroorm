@@ -1,6 +1,5 @@
 import {Collection, Entity, OneToMany, PrimaryKey, Property} from "@mikro-orm/core";
-//@ts-expect-error mikro-orm cli expects file extension
-import {type User, userEntity} from "../users/user.entity.ts";
+import {type User, userEntity} from "../users/user.entity";
 
 @Entity()
 export class UserRole {

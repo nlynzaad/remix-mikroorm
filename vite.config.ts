@@ -21,7 +21,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			"~/*": "./app/*"
+			"~/": "./app"
 		}
 	}
 });

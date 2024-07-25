@@ -1,12 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck mikro-orm cli expects file extension for listed entities
 import {defineConfig, EntityCaseNamingStrategy, ReflectMetadataProvider} from "@mikro-orm/better-sqlite";
 import {Migrator} from "@mikro-orm/migrations";
 import {SeedManager} from "@mikro-orm/seeder";
 import pluralize from "pluralize";
 
-import {userEntity} from '../users/user.entity.ts';
-import {userRoleEntity} from '../userRoles/userRole.entity.ts';
+import {userEntity} from '~/.server/lib/users/user.entity';
+import {userRoleEntity} from '~/.server/lib/userRoles/userRole.entity';
 
 import type {NamingStrategy} from "@mikro-orm/better-sqlite";
 
@@ -28,5 +26,9 @@ export const config = defineConfig({
 	},
 	extensions: [Migrator, SeedManager],
 	metadataProvider: ReflectMetadataProvider,
-	namingStrategy: TableNamingStrategy
+	namingStrategy: TableNamingStrategy,
+	metadataCache: {
+		enabled: true,
+		pretty: true
+	},
 });
