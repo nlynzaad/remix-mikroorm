@@ -1,15 +1,15 @@
 import {type ActionFunctionArgs, json, type MetaFunction} from "@remix-run/node";
 import {initORM} from "~/.server/lib/database/db";
 import {Form, useLoaderData} from "@remix-run/react";
-import {User, userEntity} from "~/.server/lib/users/user.entity";
-import {userRoleEntity} from "~/.server/lib/userRoles/userRole.entity";
+import {User} from "~/.server/lib/users/user.entity";
+import {UserRole} from "~/.server/lib/userRoles/userRole.entity";
 
 export const loader = async () => {
 	const db = (await initORM()).em.fork();
 
-	const users = await db.findAll(userEntity.schema);
+	const users = await db.findAll(User);
 
-	const userRoles = await db.findAll(userRoleEntity.schema, {populate: ['users']});
+	const userRoles = await db.findAll(UserRole, {populate: ['users']});
 
 	return json({users, userRoles})
 }

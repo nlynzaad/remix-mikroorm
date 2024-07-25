@@ -1,6 +1,6 @@
 import {type ActionFunctionArgs, redirect} from "@remix-run/node";
 import {initORM} from "~/.server/lib/database/db";
-import {userEntity} from "~/.server/lib/users/user.entity";
+import {User} from "~/.server/lib/users/user.entity";
 
 export const action = async ({params}: ActionFunctionArgs) => {
 	if (!params.id) {
@@ -10,7 +10,7 @@ export const action = async ({params}: ActionFunctionArgs) => {
 	try {
 		const userId = parseInt(params.id);
 		const db = (await initORM()).em.fork();
-		const user = db.getReference(userEntity.schema, userId);
+		const user = db.getReference(User, userId);
 
 		if (user) {
 			db.remove(user);

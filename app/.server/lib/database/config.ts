@@ -3,8 +3,8 @@ import {Migrator} from "@mikro-orm/migrations";
 import {SeedManager} from "@mikro-orm/seeder";
 import pluralize from "pluralize";
 
-import {userEntity} from '~/.server/lib/users/user.entity';
-import {userRoleEntity} from '~/.server/lib/userRoles/userRole.entity';
+import {User} from '~/.server/lib/users/user.entity';
+import {userRoleSchema as UserRole} from '~/.server/lib/userRoles/userRole.entity';
 
 import type {NamingStrategy} from "@mikro-orm/better-sqlite";
 
@@ -15,7 +15,7 @@ class TableNamingStrategy extends EntityCaseNamingStrategy implements NamingStra
 }
 
 export const config = defineConfig({
-	entities: [userEntity.schema, userRoleEntity.schema],
+	entities: [User, UserRole],
 	dbName: 'test.db',
 	migrations: {
 		path: './app/.server/lib/database/migrations',

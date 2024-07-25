@@ -1,5 +1,5 @@
 import {Collection, EntitySchema} from "@mikro-orm/core";
-import {type User, userEntity} from "~/.server/lib/users/user.entity";
+import {User} from "~/.server/lib/users/user.entity";
 
 export class UserRole {
 	id!: number;
@@ -13,14 +13,12 @@ export class UserRole {
 	}
 }
 
-const userRoleEntitySchema = new EntitySchema<UserRole>({
+export const userRoleSchema = new EntitySchema<UserRole>({
 	class: UserRole,
 	tableName: 'tblUserRoles',
 	properties: {
 		id: {type: 'int', autoincrement: true, primary: true},
 		description: {type: 'string', name: 'txtDescription'},
-		users: {kind: '1:m', entity: () => userEntity.schema, mappedBy: e => e.userRole, lazy: true},
+		users: {kind: '1:m', entity: () => User, mappedBy: e => e.userRole, lazy: true},
 	}
 });
-
-export const userRoleEntity = {schema: userRoleEntitySchema}

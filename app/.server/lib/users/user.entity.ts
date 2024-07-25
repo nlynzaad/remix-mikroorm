@@ -1,5 +1,5 @@
 import {Entity, ManyToOne, PrimaryKey, Property} from "@mikro-orm/core";
-import {type UserRole, userRoleEntity} from "~/.server/lib/userRoles/userRole.entity";
+import {UserRole} from "~/.server/lib/userRoles/userRole.entity";
 
 @Entity()
 export class User {
@@ -12,7 +12,7 @@ export class User {
 	@Property({name: 'txtEmail', type: 'string'})
 	email: string;
 
-	@ManyToOne({entity: () => userRoleEntity.schema, inversedBy: e=> e.users, eager: true, name: 'fkiUserRoleId'})
+	@ManyToOne({entity: () => UserRole, inversedBy: e=> e.users, eager: true, name: 'fkiUserRoleId'})
 	userRole: UserRole;
 
 	constructor({name, email, userRole}: User) {
@@ -21,5 +21,3 @@ export class User {
 		this.userRole = userRole;
 	}
 }
-
-export const userEntity = {schema: User};

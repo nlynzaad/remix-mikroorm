@@ -1,10 +1,10 @@
 import {Seeder} from "@mikro-orm/seeder";
 import {EntityManager} from "@mikro-orm/core";
-import {UserRole, userRoleEntity} from "~/.server/lib/userRoles/userRole.entity";
+import {UserRole} from "~/.server/lib/userRoles/userRole.entity";
 
 export class UserRoleSeeder extends Seeder {
 	async run(em: EntityManager): Promise<void> {
-		const userRolesInDb = await em.findAll(userRoleEntity.schema);
+		const userRolesInDb = await em.findAll(UserRole);
 
 		const userRolesToCreate = [
 			new UserRole({description: 'admin'}),
