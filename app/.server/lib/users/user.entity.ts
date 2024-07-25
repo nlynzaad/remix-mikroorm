@@ -12,7 +12,7 @@ export class User {
 	@Property({name: 'txtEmail', type: 'string'})
 	email: string;
 
-	@ManyToOne({entity: () => userRoleEntity.schema, inversedBy: e=> e.users, eager: true})
+	@ManyToOne({entity: () => userRoleEntity.schema, inversedBy: e=> e.users, eager: true, name: 'fkiUserRoleId'})
 	userRole: UserRole;
 
 	constructor({name, email, userRole}: User) {
