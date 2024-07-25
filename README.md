@@ -10,7 +10,7 @@ Using tsx instead of ts-node resolves all the pain points, so I have added an ex
 
 This test is now feature complete as it answers all the questions I had in implementing this stack.
 
-## NOTE: I'm making this public in the hope it can assist someone that wants to do a similar stack. No support can and will be given on this.
+### NOTE: I'm making this public in the hope it can assist someone that wants to do a similar stack. No support can and will be given on this.
 
 ## Getting started
 
