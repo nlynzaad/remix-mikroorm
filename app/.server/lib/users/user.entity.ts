@@ -1,22 +1,25 @@
-import {EntitySchema} from "@mikro-orm/core";
+import {Entity, ManyToOne, PrimaryKey, Property} from "@mikro-orm/core";
 import {type UserRole, userRoleEntity} from "~/.server/lib/userRoles/userRole.entity";
 
-export interface User {
-	id: number;
+@Entity()
+export class User {
+	@PrimaryKey({name: 'pkiUserId', type: 'int', autoincrement: true, unique: true})
+	id!: number;
+
+	@Property({name: 'txtName', type: 'string'})
 	name: string;
+
+	@Property({name: 'txtEmail', type: 'string'})
 	email: string;
+
+	@ManyToOne({entity: () => userRoleEntity.schema, inversedBy: e=> e.users, eager: true})
 	userRole: UserRole;
+
+	constructor({name, email, userRole}: User) {
+		this.name = name;
+		this.email = email;
+		this.userRole = userRole;
+	}
 }
 
-const userEntitySchema = new EntitySchema<User>({
-	name: 'User',
-	tableName: 'tblUsers',
-	properties: {
-		id: {type: 'int', autoincrement: true, primary: true},
-		name: {type: 'string', name: 'txtUsername'},
-		email: {type: 'string', name: 'txtEmail'},
-		userRole: {kind: 'm:1', entity: () => userRoleEntity.schema, nullable: false, name: 'fkiUserRoleId', eager: true},
-	}
-});
-
-export const userEntity = {schema: userEntitySchema};
+export const userEntity = {schema: User};

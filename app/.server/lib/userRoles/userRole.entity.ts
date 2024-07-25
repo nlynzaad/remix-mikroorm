@@ -1,21 +1,26 @@
-import {Collection, Entity, OneToMany, PrimaryKey, Property} from "@mikro-orm/core";
+import {Collection, EntitySchema} from "@mikro-orm/core";
 import {type User, userEntity} from "~/.server/lib/users/user.entity";
 
-@Entity()
 export class UserRole {
-	@PrimaryKey({name: 'pkiUserRoleId', type: 'int'})
 	id!: number;
 
-	@Property({name: 'txtDescription', type: 'string'})
 	description!: string;
 
-	@OneToMany(() => userEntity.schema, (user: User) => user.userRole)
 	users = new Collection<User>(this);
 
-	constructor(id: number, description: string) {
-		this.id = id;
+	constructor({description}: {description: string}) {
 		this.description = description;
 	}
 }
 
-export const userRoleEntity = {schema: UserRole}
+const userRoleEntitySchema = new EntitySchema<UserRole>({
+	class: UserRole,
+	tableName: 'tblUserRoles',
+	properties: {
+		id: {type: 'int', autoincrement: true, primary: true},
+		description: {type: 'string', name: 'txtDescription'},
+		users: {kind: '1:m', entity: () => userEntity.schema, mappedBy: e => e.userRole},
+	}
+});
+
+export const userRoleEntity = {schema: userRoleEntitySchema}

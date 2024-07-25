@@ -1,7 +1,7 @@
 import {type ActionFunctionArgs, json, type MetaFunction} from "@remix-run/node";
 import {initORM} from "~/.server/lib/database/db";
 import {Form, useLoaderData} from "@remix-run/react";
-import {type User, userEntity} from "~/.server/lib/users/user.entity";
+import {User, userEntity} from "~/.server/lib/users/user.entity";
 import {userRoleEntity} from "~/.server/lib/userRoles/userRole.entity";
 
 export const loader = async () => {
@@ -14,16 +14,17 @@ export const loader = async () => {
 	return json({users, userRoles})
 }
 
-type userActionSubmissionType = User;
-
 export const action = async ({request}: ActionFunctionArgs) => {
 	const formData = await request.formData();
-	const user = Object.fromEntries(formData) as unknown as userActionSubmissionType;
+
+	const user = new User(Object.fromEntries(formData) as unknown as User);
 
 	const db = (await initORM()).em.fork();
 
-	db.create(userEntity.schema, user)
+	db.persist(user);
+
 	await db.flush();
+
 	return null
 }
 

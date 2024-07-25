@@ -3,14 +3,26 @@ import {initORM} from "~/.server/lib/database/db";
 import {userEntity} from "~/.server/lib/users/user.entity";
 
 export const action = async ({params}: ActionFunctionArgs) => {
-	console.log('delete: ', params.id)
-
 	if (!params.id) {
-		throw new Error("Missing user id param")
+		throw new Response("Missing user id param", {status: 404})
 	}
 
-	const db = (await initORM()).em.fork();
+	try {
+		const userId = parseInt(params.id);
+		const db = (await initORM()).em.fork();
+		const user = await db.findOne(userEntity.schema, {id: userId})
 
-	await db.nativeDelete(userEntity.schema, {id: parseInt(params.id)})
+		if (user) {
+			db.remove(user);
+
+			await db.flush();
+		}
+	} catch (err) {
+		if (err instanceof Error) {
+			throw new Response(err.message, {status: 404})
+		}
+		throw new Response('Unknown error deleting user', {status: 404})
+	}
+
 	return redirect('/');
 }
