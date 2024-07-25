@@ -8,7 +8,9 @@ Given that remix uses vite and hence the project is bundled with esbuild the req
 
 Using tsx instead of ts-node resolves all the pain points, so I have added an extra script in package.json to call the mikro-orm esm cli tool via tsx instead of the default ts-node usage. There is talk of possibly replacing ts-node in future releases of mikro-orm [discussion](https://github.com/mikro-orm/mikro-orm/discussions/5275). 
 
-## I'm making this public in the hope it can assist someone that wants to do a similar stack. No support can and will be given on this.
+This test is now feature complete as it answers all the questions I had in implementing this stack.
+
+## NOTE: I'm making this public in the hope it can assist someone that wants to do a similar stack. No support can and will be given on this.
 
 ## Getting started
 
