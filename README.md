@@ -22,7 +22,7 @@ npm run mikro-orm migration:create
 ``` 
 3) run the following to create the database and apply the migration
 ```shellscript s
-npm mikro-orm migration:up
+npm run mikro-orm migration:up
 ``` 
 
 ## Development
