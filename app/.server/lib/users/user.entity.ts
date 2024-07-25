@@ -1,7 +1,7 @@
 import {Entity, ManyToOne, PrimaryKey, Property} from "@mikro-orm/core";
 import {UserRole} from "~/.server/lib/userRoles/userRole.entity";
 
-@Entity()
+@Entity({tableName: 'tblUsers'})
 export class User {
 	@PrimaryKey({name: 'pkiUserId', type: 'int', autoincrement: true, unique: true})
 	id!: number;

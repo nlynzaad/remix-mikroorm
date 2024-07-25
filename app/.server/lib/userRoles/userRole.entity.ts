@@ -17,7 +17,7 @@ export const userRoleSchema = new EntitySchema<UserRole>({
 	class: UserRole,
 	tableName: 'tblUserRoles',
 	properties: {
-		id: {type: 'int', autoincrement: true, primary: true},
+		id: {type: 'int', autoincrement: true, primary: true, name: 'pkiUserRoleId'},
 		description: {type: 'string', name: 'txtDescription'},
 		users: {kind: '1:m', entity: () => User, mappedBy: e => e.userRole, lazy: true},
 	}
