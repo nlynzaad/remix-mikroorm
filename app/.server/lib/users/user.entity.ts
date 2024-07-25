@@ -21,5 +21,4 @@ const userEntitySchema = new EntitySchema<User>({
 	}
 });
 
-export const schema = userEntitySchema;
 export const userEntity = {name: entityName, schema: userEntitySchema};
