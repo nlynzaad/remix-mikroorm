@@ -19,7 +19,7 @@ const userRoleEntitySchema = new EntitySchema<UserRole>({
 	properties: {
 		id: {type: 'int', autoincrement: true, primary: true},
 		description: {type: 'string', name: 'txtDescription'},
-		users: {kind: '1:m', entity: () => userEntity.schema, mappedBy: e => e.userRole},
+		users: {kind: '1:m', entity: () => userEntity.schema, mappedBy: e => e.userRole, lazy: true},
 	}
 });
 

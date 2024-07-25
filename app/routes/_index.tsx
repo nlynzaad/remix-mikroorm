@@ -9,7 +9,7 @@ export const loader = async () => {
 
 	const users = await db.findAll(userEntity.schema);
 
-	const userRoles = await db.findAll(userRoleEntity.schema);
+	const userRoles = await db.findAll(userRoleEntity.schema, {populate: ['users']});
 
 	return json({users, userRoles})
 }
@@ -81,6 +81,15 @@ export default function Index() {
 								<button type={'submit'} className={'pl-2'}>X</button>
 							</div>
 						</Form>
+					))}
+					{userRoles.map((role) => (
+						<div key={role.id}>
+							<div>{role.description}</div>
+							{role.users.map((user) => (
+								<div key={user.id}>{user.name}</div>
+							))
+							}
+						</div>
 					))}
 				</div>
 			</div>
