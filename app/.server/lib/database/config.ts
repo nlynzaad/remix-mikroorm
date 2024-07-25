@@ -1,8 +1,4 @@
-import {
-	defineConfig,
-	EntityCaseNamingStrategy,
-	ReflectMetadataProvider,
-} from "@mikro-orm/better-sqlite";
+import {defineConfig, EntityCaseNamingStrategy, ReflectMetadataProvider} from "@mikro-orm/better-sqlite";
 import {Migrator} from "@mikro-orm/migrations";
 import {SeedManager} from "@mikro-orm/seeder";
 import pluralize from "pluralize";
@@ -31,12 +27,5 @@ export const config = defineConfig({
 	extensions: [Migrator, SeedManager],
 	metadataProvider: ReflectMetadataProvider,
 	namingStrategy: TableNamingStrategy,
-	metadataCache: {
-		enabled: true,
-		pretty: true,
-		options: {
-			cacheDir: './temp'
-		}
-	},
 	dynamicImportProvider: id => import(/* @vite-ignore */ id),
 });

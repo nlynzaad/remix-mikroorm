@@ -1,5 +1,5 @@
 import {Collection, Entity, OneToMany, PrimaryKey, Property} from "@mikro-orm/core";
-import {type User, userEntity} from "../users/user.entity";
+import {type User, userEntity} from "~/.server/lib/users/user.entity";
 
 @Entity()
 export class UserRole {
@@ -9,7 +9,7 @@ export class UserRole {
 	@Property({name: 'txtDescription', type: 'string'})
 	description!: string;
 
-	@OneToMany(() => userEntity.name, (user: User) => user.userRole)
+	@OneToMany(() => userEntity.schema, (user: User) => user.userRole)
 	users = new Collection<User>(this);
 
 	constructor(id: number, description: string) {
@@ -18,4 +18,4 @@ export class UserRole {
 	}
 }
 
-export const userRoleEntity = {name: 'UserRole', schema: UserRole}
+export const userRoleEntity = {schema: UserRole}
