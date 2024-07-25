@@ -82,13 +82,18 @@ export default function Index() {
 							</div>
 						</Form>
 					))}
-					{userRoles.map((role) => (
-						<div key={role.id}>
+					<br/>
+					{userRoles.map((role, index) => (
+						<div key={role.id} className={'flex flex-row gap-3'}>
+							<div>{index === 0 ? <strong>Roles</strong> : null}
 							<div>{role.description}</div>
+							</div>
+							<div>{index === 0 ? <strong>Users</strong> : null}
 							{role.users.map((user) => (
-								<div key={user.id}>{user.name}</div>
+								<div key={user.id}>{user.id} - {user.name}</div>
 							))
 							}
+							</div>
 						</div>
 					))}
 				</div>
