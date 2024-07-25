@@ -10,7 +10,7 @@ export const action = async ({params}: ActionFunctionArgs) => {
 	try {
 		const userId = parseInt(params.id);
 		const db = (await initORM()).em.fork();
-		const user = await db.findOne(userEntity.schema, {id: userId})
+		const user = db.getReference(userEntity.schema, userId);
 
 		if (user) {
 			db.remove(user);
